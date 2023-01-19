@@ -1,0 +1,44 @@
+﻿@page
+@model WolfAgencyWebApplication.Pages.Products.EditModel
+
+<h4>Edit</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" id="EditForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Product.Id" />
+            <div class="form-group">
+                <label asp-for="Product.Code" class="control-label"></label>
+                <input asp-for="Product.Code" class="form-control" />
+                <span asp-validation-for="Product.Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Name" class="control-label"></label>
+                <input asp-for="Product.Name" class="form-control" />
+                <span asp-validation-for="Product.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Price" class="control-label"></label>
+                <input asp-for="Product.Price" class="form-control" />
+                <span asp-validation-for="Product.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <p></p>
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-page=".././Index"><input type="button" value="Cancel" class="btn btn-secondary" /></a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+    <script type="text/javascript" src="~/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $("body").on("submit", "#EditForm", function () {
+            return confirm("Are all entries correct?");
+        });
+    </script>

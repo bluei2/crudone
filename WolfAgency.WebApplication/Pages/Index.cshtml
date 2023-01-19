@@ -1,0 +1,42 @@
+﻿@page
+@model WolfAgencyWebApplication.Pages.Products.IndexModel
+
+<a asp-page="Products/Create"><input type="button" value="Add New" class="btn btn-warning" /></a>
+@if (Model.Product.Count > 0){
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Product Code
+            </th>
+            <th>
+                Product Name
+            </th>
+            <th>
+                Price
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Product) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        <a asp-page="./Products/Edit" asp-route-id="@item.Id"><img src="~/img/edit.png" /></a> |
+                        <a asp-page="./Products/Details" asp-route-id="@item.Id"><img src="~/img/details.png" /></a> |
+                        <a asp-page="./Products/Delete" asp-route-id="@item.Id"><img src="~/img/delete.png" /></a>
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>
+}
